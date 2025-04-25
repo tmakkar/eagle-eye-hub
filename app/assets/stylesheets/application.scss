@@ -1,0 +1,45 @@
+/*
+ * This is a manifest file that'll be compiled into application.css.
+ *
+ * With Propshaft, assets are served efficiently without preprocessing steps. You can still include
+ * application-wide styles in this file, but keep in mind that CSS precedence will follow the standard
+ * cascading order, meaning styles declared later in the document or manifest will override earlier ones,
+ * depending on specificity.
+ *
+ * Consider organizing styles into separate files for maintainability.
+ */
+ $primary-color: #003366;
+ $secondary-color: #ffcc00;
+ $font-stack: 'Helvetica, Arial, sans-serif';
+ $primary-color: #3498db;
+
+ body {
+   font-family: $font-stack;
+   background-color: #f9f9f9;
+   color: #333;
+ }
+
+
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f4f4f4;
+
+  h1 {
+    color: $primary-color;
+  }
+
+  .navbar {
+    background-color: $primary-color;
+    color: white;
+  }
+}
+
+.product {
+  padding: 20px;
+  .title {
+    font-size: 1.5em;
+  }
+}
+
+@import "bootstrap";
+ 

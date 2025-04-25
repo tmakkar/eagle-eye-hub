@@ -1,0 +1,5 @@
+<h1>About Us</h1>
+<p><%= @page&.content %></p>
+<% if current_user&.admin? %>
+  <%= link_to "Edit", edit_static_page_path(@page) %>
+<% end %>

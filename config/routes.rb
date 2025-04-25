@@ -1,0 +1,41 @@
+Rails.application.routes.draw do
+  get "categories/index"
+  get "categories/show"
+  get "cart_items/create"
+  get "cart_items/update"
+  get "cart_items/destroy"
+  get "carts/show"
+  resources :static_pages
+  get "pages/about"
+  get "pages/contact"
+  get '/cart', to: 'carts#show', as: 'cart'
+
+  resources :products
+  
+    namespace :admin do
+      get '/', to: 'dashboard#index'  # <-- This adds /admin as an alias
+      get 'dashboard/index'
+    end
+  devise_for :users
+  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+
+  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
+  # Can be used by load balancers and uptime monitors to verify that the app is live.
+  get "up" => "rails/health#show", as: :rails_health_check
+
+  # Render dynamic PWA files from app/views/pwa/* (remember to link manifest in application.html.erb)
+  # get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+  # get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
+
+  # Defines the root path route ("/")
+  # root "posts#index"
+  root "home#index" # Update this as needed
+
+  #root "products#index"
+resources :products, only: [:index, :show]
+resources :categories, only: [:index, :show]
+resources :carts, only: [:show]
+resources :cart_line_items, only: [:update, :destroy]
+resources :orders, only: [:create, :show]
+
+end

@@ -1,0 +1,15 @@
+<div class="container" style="text-align: center; padding: 2rem;">
+  <h1>Welcome to Eagle Eye Hub 🦅</h1>
+  <p style="font-size: 1.2rem; margin-top: 1rem;">
+    Your one-stop platform for smart, secure, and seamless shopping.
+  </p>
+
+  <div style="margin-top: 2rem;">
+    <% if user_signed_in? %>
+      <p>Hello, <strong><%= current_user.email %></strong>!</p>
+      <%= link_to 'Go to Dashboard', admin_dashboard_index_path, class: 'btn btn-primary' %>
+    <% else %>
+      <%= link_to 'Sign In', new_user_session_path, class: 'btn btn-secondary' %>
+    <% end %>
+  </div>
+</div>
