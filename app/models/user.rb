@@ -7,6 +7,4 @@ class User < ApplicationRecord
 after_create :create_cart
 validates :email, presence: true, uniqueness: true
   validates :password, length: { minimum: 6 }, if: -> { password.present? }
-
-  
 end

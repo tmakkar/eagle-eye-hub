@@ -47,10 +47,10 @@ group :development, :test do
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 
-  # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
+ # Omakase Ruby styling [https://github.com/rails/rubocop-rails-omakase/]
  gem "rubocop-rails-omakase", require: false
 
-  gem 'faker'
+  gem "faker"
 end
 
 group :development do
@@ -65,8 +65,12 @@ group :test do
 end
 gem "devise"
 
-gem 'kaminari'
+gem "kaminari"
 
-gem 'stripe'
+gem "stripe"
 
-gem 'breadcrumbs_on_rails'
+gem "breadcrumbs_on_rails"
+
+gem "aws-sdk-s3", require: false
+
+gem "rubocop", "~> 1.75", group: :development

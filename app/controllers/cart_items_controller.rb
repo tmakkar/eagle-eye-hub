@@ -11,7 +11,7 @@ class CartItemsController < ApplicationController
     session[:cart][product_id] = params[:quantity].to_i
     redirect_to cart_path
   end
-  
+
   def destroy
     session[:cart].delete(params[:product_id].to_s)
     redirect_to cart_path

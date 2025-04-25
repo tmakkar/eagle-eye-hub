@@ -1,5 +1,5 @@
 class CartLineItemsController < ApplicationController
-  before_action :set_line_item, only: [:update, :destroy]
+  before_action :set_line_item, only: [ :update, :destroy ]
 
   def update
     if @line_item.update(quantity: params[:cart_line_item][:quantity])

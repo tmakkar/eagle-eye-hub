@@ -3,11 +3,11 @@ class StripeController < ApplicationController
     order = current_user.orders.find(params[:order_id])
 
     session = Stripe::Checkout::Session.create(
-      payment_method_types: ['card'],
+      payment_method_types: [ "card" ],
       line_items: order.order_items.map do |item|
         {
           price_data: {
-            currency: 'usd',
+            currency: "usd",
             product_data: {
               name: item.product.name
             },
@@ -16,9 +16,9 @@ class StripeController < ApplicationController
           quantity: item.quantity
         }
       end,
-      mode: 'payment',
-      success_url: root_url + '?success=true',
-      cancel_url: root_url + '?canceled=true'
+      mode: "payment",
+      success_url: root_url + "?success=true",
+      cancel_url: root_url + "?canceled=true"
     )
 
     redirect_to session.url, allow_other_host: true

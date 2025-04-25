@@ -8,13 +8,13 @@ Rails.application.routes.draw do
   resources :static_pages
   get "pages/about"
   get "pages/contact"
-  get '/cart', to: 'carts#show', as: 'cart'
+  get "/cart", to: "carts#show", as: "cart"
 
   resources :products
-  
+
     namespace :admin do
-      get '/', to: 'dashboard#index'  # <-- This adds /admin as an alias
-      get 'dashboard/index'
+      get "/", to: "dashboard#index"  # <-- This adds /admin as an alias
+      get "dashboard/index"
     end
   devise_for :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
@@ -31,11 +31,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   root "home#index" # Update this as needed
 
-  #root "products#index"
-resources :products, only: [:index, :show]
-resources :categories, only: [:index, :show]
-resources :carts, only: [:show]
-resources :cart_line_items, only: [:update, :destroy]
-resources :orders, only: [:create, :show]
-
+# root "products#index"
+resources :products, only: [ :index, :show ]
+resources :categories, only: [ :index, :show ]
+resources :carts, only: [ :show ]
+resources :cart_line_items, only: [ :update, :destroy ]
+resources :orders, only: [ :create, :show ]
 end

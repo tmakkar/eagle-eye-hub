@@ -17,10 +17,9 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :address, :province])
-    devise_parameter_sanitizer.permit(:account_update, keys: [:name, :address, :province])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [ :name, :address, :province ])
+    devise_parameter_sanitizer.permit(:account_update, keys: [ :name, :address, :province ])
   end
 
   add_breadcrumb "Home", :root_path
-  
 end

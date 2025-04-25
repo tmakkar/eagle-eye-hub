@@ -3,7 +3,7 @@ class OrdersController < ApplicationController
 
   def create
     order = current_user.orders.create!(
-      status: 'pending',
+      status: "pending",
       total_price: 0
     )
 
@@ -28,7 +28,7 @@ class OrdersController < ApplicationController
   def index
     @orders = current_user.orders.includes(:order_items)
   end
-  
+
   def show
     @order = current_user.orders.find(params[:id])
   end
@@ -38,5 +38,4 @@ class OrdersController < ApplicationController
     @order.update(status: params[:status])
     redirect_to admin_orders_path
   end
-  
 end

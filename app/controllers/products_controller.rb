@@ -2,8 +2,8 @@ class ProductsController < ApplicationController
   before_action :set_product, only: %i[ show edit update destroy ]
   before_action :authenticate_user!
  before_action :require_admin
-  # GET /products or /products.json
-  
+# GET /products or /products.json
+
 add_breadcrumb "Products", :products_path
 
 def show
@@ -13,18 +13,18 @@ def show
 end
   def index
     @products = Product.all
-  
+
     # Search logic
     if params[:search].present?
       keyword = params[:search]
       @products = @products.where("name ILIKE ? OR description ILIKE ?", "%#{keyword}%", "%#{keyword}%")
     end
-  
+
     # Category filter
     if params[:category_id].present?
       @products = @products.where(category_id: params[:category_id])
     end
-  
+
     # Filter logic as before...
     @products = @products.page(params[:page]).per(6)
   end
@@ -83,7 +83,7 @@ end
   def destroy
     @product.destroy!
 
-    
+
   flash[:alert] = "Product was deleted!"
   redirect_to products_path
 
@@ -123,4 +123,3 @@ def index
 
   @products = @products.page(params[:page]).per(6) # show 6 per page
 end
-
